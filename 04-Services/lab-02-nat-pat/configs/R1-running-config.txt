@@ -1,0 +1,26 @@
+hostname R1
+
+interface GigabitEthernet0/0
+ ip address 209.165.200.226 255.255.255.224
+ ip nat outside
+ no shutdown
+
+interface GigabitEthernet0/1
+ no shutdown
+
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+
+interface GigabitEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ ip nat inside
+
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 192.168.20.0 0.0.0.255
+
+ip nat inside source list 1 interface GigabitEthernet0/0 overload
+
+ip route 0.0.0.0 0.0.0.0 209.165.200.225

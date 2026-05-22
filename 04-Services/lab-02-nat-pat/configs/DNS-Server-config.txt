@@ -1,0 +1,12 @@
+Device Name: DNS Server
+
+IP Address: 8.8.8.8
+Subnet Mask: 255.255.255.0
+Default Gateway: 8.8.8.1
+
+Purpose:
+This server simulates an external public DNS/internet server used to validate NAT/PAT translation and external connectivity from internal enterprise VLANs.
+
+Verification:
+- Successfully responded to ICMP echo requests from VLAN 10 and VLAN 20 hosts
+- Used to validate successful PAT translations on R1
