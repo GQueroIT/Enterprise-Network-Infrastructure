@@ -1,0 +1,67 @@
+hostname SW1
+
+!
+! VLAN Configuration
+!
+
+vlan 10
+ name USERS
+
+vlan 20
+ name SERVERS
+
+vlan 99
+ name MGMT
+
+!
+! Access Ports - USERS VLAN
+!
+
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+
+!
+! Access Port - SERVER VLAN
+!
+
+interface FastEthernet0/10
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+
+!
+! Trunk Port to Router
+!
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+
+!
+! Management VLAN Interface
+!
+
+interface vlan 99
+ ip address 192.168.99.2 255.255.255.0
+ no shutdown
+
+!
+! Default Gateway
+!
+
+ip default-gateway 192.168.99.1
+
+!
+! Verification Commands Used
+!
+
+! show vlan brief
+! show interfaces trunk
+! show mac address-table
+! show running-config

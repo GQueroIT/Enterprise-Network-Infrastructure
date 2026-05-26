@@ -1,0 +1,66 @@
+Enterprise DNS Services Lab
+Server Configuration Documentation
+
+--------------------------------------------------
+SERVER ROLE
+--------------------------------------------------
+
+Primary Functions:
+- Internal DNS Server
+- Internal HTTP Web Server
+
+--------------------------------------------------
+NETWORK CONFIGURATION
+--------------------------------------------------
+
+IP Address: 192.168.20.100
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.20.1
+DNS Server: 192.168.20.100
+
+VLAN Assignment:
+- VLAN 20 (SERVERS)
+
+--------------------------------------------------
+DNS CONFIGURATION
+--------------------------------------------------
+
+DNS Service Status:
+- ENABLED
+
+Configured DNS Records:
+
+Hostname: www.smartech.local
+Type: A Record
+IP Address: 192.168.20.100
+
+--------------------------------------------------
+HTTP CONFIGURATION
+--------------------------------------------------
+
+HTTP Service Status:
+- ENABLED
+
+Purpose:
+- Internal enterprise web service testing
+- DNS resolution validation
+- Inter-VLAN routing validation
+
+--------------------------------------------------
+VALIDATION RESULTS
+--------------------------------------------------
+
+Successful Tests:
+- Internal hostname resolution
+- HTTP webpage access
+- Inter-VLAN communication
+- Client DNS queries
+
+--------------------------------------------------
+LAB FUNCTION
+--------------------------------------------------
+
+The server simulated an internal enterprise services VLAN hosting:
+- DNS infrastructure
+- internal web applications
+- centralized internal network services

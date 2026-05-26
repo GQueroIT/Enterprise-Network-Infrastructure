@@ -1,0 +1,80 @@
+hostname R1
+
+!
+! WAN Interface
+!
+
+interface GigabitEthernet0/0
+ ip address 209.165.200.225 255.255.255.252
+ ip nat outside
+ no shutdown
+
+!
+! Router-on-a-Stick Trunk Interface
+!
+
+interface GigabitEthernet0/1
+ no ip address
+ no shutdown
+
+!
+! VLAN 10 - USERS
+!
+
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ ip nat inside
+
+!
+! VLAN 20 - SERVERS
+!
+
+interface GigabitEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ ip nat inside
+
+!
+! VLAN 99 - MANAGEMENT
+!
+
+interface GigabitEthernet0/1.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.1 255.255.255.0
+ ip nat inside
+
+!
+! DHCP Configuration
+!
+
+ip dhcp excluded-address 192.168.10.1 192.168.10.50
+
+ip dhcp pool VLAN10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 192.168.20.100
+ domain-name smartech.local
+
+!
+! NAT/PAT Configuration
+!
+
+access-list 1 permit 192.168.0.0 0.0.255.255
+
+ip nat inside source list 1 interface GigabitEthernet0/0 overload
+
+!
+! Default Route
+!
+
+ip route 0.0.0.0 0.0.0.0 209.165.200.226
+
+!
+! Verification Commands Used
+!
+
+! show ip interface brief
+! show ip route
+! show ip nat translations
+! show ip nat statistics
