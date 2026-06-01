@@ -65,7 +65,7 @@ The organization needs:
 
 ## Network Topology
 
-![Enterprise WAN Topology](Evidence/final-topology.png)
+![Enterprise WAN Topology](Topology/topology-enterprise-design.png)
 
 ---
 
